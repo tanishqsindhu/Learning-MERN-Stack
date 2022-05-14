@@ -33,3 +33,9 @@ button:active{
 .post:nth-of-type(2){
     background-color: blue
 }
+h2::first-letter{
+    font-size: 70px;
+}
+::selection{
+    background-color: yellow;
+}
