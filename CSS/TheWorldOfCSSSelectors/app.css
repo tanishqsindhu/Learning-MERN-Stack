@@ -20,3 +20,6 @@ font-size: 10px;
 footer>a{
     color: black;
 }
+input[type="password"]{
+    background-color: black;
+}
