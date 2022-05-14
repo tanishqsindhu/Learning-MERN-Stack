@@ -1,0 +1,13 @@
+h1{
+    text-align: right;
+    font-size: medium;
+    width: 50%;
+    font-weight: 400;
+    text-decoration: #000 underline wavy;
+    letter-spacing: 15px;
+    font-family: Segoe UI, Futura, Arial, sans-serif;
+}
+p{
+    font-weight: 700;
+    line-height: 2;
+}

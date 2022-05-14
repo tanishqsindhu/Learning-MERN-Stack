@@ -1,0 +1,16 @@
+*{
+    color: pink;
+    background-color: cyan;
+}
+#signup{
+    background-color: blue;
+    color: white;
+}
+.tag{
+    color: aqua;
+    background-color: red;
+    font-size: 16px;
+}
+.post a{
+    color: blue;
+}
