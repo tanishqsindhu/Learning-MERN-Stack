@@ -23,3 +23,13 @@ footer>a{
 input[type="password"]{
     background-color: black;
 }
+.post button:hover{
+    background-color: darkred;
+    color: skyblue;
+}
+button:active{
+    background-color: green;
+}
+.post:nth-of-type(2){
+    background-color: blue
+}
