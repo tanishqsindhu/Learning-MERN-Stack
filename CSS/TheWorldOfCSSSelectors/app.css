@@ -12,7 +12,7 @@
     font-size: 16px;
 }
 h1{
-    color: blue;
+    color: blue !important;
 }
 .post a{
     color: blue;
