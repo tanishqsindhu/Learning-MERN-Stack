@@ -14,3 +14,9 @@
 .post a{
     color: blue;
 }
+h2 +button{
+font-size: 10px;
+}
+footer>a{
+    color: black;
+}
