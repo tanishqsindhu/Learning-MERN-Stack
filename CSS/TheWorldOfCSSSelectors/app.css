@@ -46,3 +46,6 @@ h2::first-letter{
 h1{
     color: yellow;
 }
+button:hover{
+    background-color: olive;
+}
