@@ -1,0 +1,22 @@
+h1{
+    background-color: aqua;
+    border: 1px solid black;
+    width: 500px;
+    margin: 10px;
+    padding: 100px;
+    display: none;
+}
+span{
+    background-color: palevioletred;
+    border: 1px solid black;
+    width: 500px;
+    margin: 10px;
+    padding: 100px;
+}
+div{
+    background-color: olive;
+    width: 200px;
+    height: 200px;
+    border: 10px solid black;
+    display: inline-block;
+}
