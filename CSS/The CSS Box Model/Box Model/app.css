@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 div{
     width: 200px;
     height: 200px;
@@ -7,6 +10,7 @@ h1{
     background-color: #e5989b;
     padding-left: 10px;
     padding-bottom: 30px;
+    margin-bottom: 0;
 }
 #one{
     background-color: #e5989b;
@@ -21,6 +25,7 @@ h1{
     border-width: 3px;
     border-style: dashed;
     border-left-width: 8px;
+    margin: 200px;
 }
 #three{
     background-color: #6d6875;
