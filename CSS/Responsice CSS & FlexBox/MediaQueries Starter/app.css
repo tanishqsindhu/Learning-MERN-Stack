@@ -8,12 +8,20 @@ h1 {
 }
 nav {
     font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
 }
 
 ul,li {
     display: inline;
     margin: 0;
     padding: 0;
+}
+ul{
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
 }
 @media(max-width:1500px){
     h1{
@@ -33,6 +41,14 @@ ul,li {
 @media (orientation:landscap){
     h1 {
         color: blue;
+    }
+}
+@media(max-width:768px){
+    nav{
+        flex-direction: column;
+    }
+    ul{
+        flex-direction: column;
     }
 }
 
