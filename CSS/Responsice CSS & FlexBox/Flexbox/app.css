@@ -31,3 +31,18 @@ div:nth-of-type(5){
 div:nth-of-type(3){
     flex-shrink: 2;
 }
+main{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    border: 5px solid black;
+    height: 500px;
+}
+main .sidebar{
+    background-color: #6930c6;
+    flex: 1 30px ;
+}
+main .maincontent{
+    background-color: #80ff80;
+    flex: 2 1  800px;
+}
