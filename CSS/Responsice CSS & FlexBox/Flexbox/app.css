@@ -11,7 +11,8 @@ h1 {
     margin: 0 auto;
     border: 5px solid #003049;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
 }
 #container div{
     width: 200px;
