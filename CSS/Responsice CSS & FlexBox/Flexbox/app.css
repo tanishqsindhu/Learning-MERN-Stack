@@ -14,10 +14,12 @@ h1 {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 #container div{
     width: 200px;
     height: 200px;
 }
-
+div:nth-of-type(3){
+    align-self: flex-end;
+}
