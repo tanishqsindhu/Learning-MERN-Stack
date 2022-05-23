@@ -29,13 +29,10 @@ if(day==='Fri'){
 }
 
 const password=prompt('Enter password more than 6');
-if(password>=6){
+if(password>=6&&password.indexOf(' ')===-1){
     console.log("password is long enough");
-    if(password.indexOf(' ')===-1){
         console.log('doesnot have space');
-    }else{
-        console.log('remove Spaces');
-    }
 }else{
     console.log('password is not long enough');
+    console.log('remove Spaces');
 }
