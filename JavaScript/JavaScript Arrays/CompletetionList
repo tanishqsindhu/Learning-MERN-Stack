@@ -6,3 +6,4 @@ Shift & Unshift
 Concat,IndexOf,includes&Reverse
 Slice & Splice
 Reference Types & Equality Testing
+Arrays + Const
