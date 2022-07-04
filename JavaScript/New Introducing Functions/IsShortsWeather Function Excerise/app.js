@@ -5,3 +5,5 @@ function isShortsWeather(temperature){
     }
     return false;
 }
+
+isShortsWeather(80);
