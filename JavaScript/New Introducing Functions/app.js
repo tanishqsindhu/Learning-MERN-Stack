@@ -3,7 +3,11 @@ function singSong(){
     console.log("RE");
     console.log("MI");
 }
-singSong();
-singSong();
-singSong();
-singSong();
+// Arguments Intro
+function greet(firstName){
+    console.log(`Hi ${firstName}`);
+}
+// singSong();
+// singSong();
+// singSong();
+// singSong();
