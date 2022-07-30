@@ -2,3 +2,4 @@ Introducing The DOM
 The Document Object
 getElementById
 getElementsByTagName & className
+querySelector & querySelectorAll
