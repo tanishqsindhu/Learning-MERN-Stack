@@ -3,3 +3,4 @@ The Document Object
 getElementById
 getElementsByTagName & className
 querySelector & querySelectorAll
+innerHTML, textContent, & innerText
