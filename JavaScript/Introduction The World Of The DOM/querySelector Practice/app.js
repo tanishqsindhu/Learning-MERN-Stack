@@ -1,3 +1,3 @@
-// Write your code in here:
-const image=document.getElementById('unicorn')
-const heading=document.getElementById('mainheading')
+// Your code goes in here!
+const doneTodos = document.querySelectorAll(".done");
+const checkbox = document.querySelector("input[type='checkbox']")
