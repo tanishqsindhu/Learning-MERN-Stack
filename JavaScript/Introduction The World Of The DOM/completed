@@ -5,3 +5,4 @@ getElementsByTagName & className
 querySelector & querySelectorAll
 innerHTML, textContent, & innerText
 Changing Styles
+Class List
