@@ -4,3 +4,4 @@ getElementById
 getElementsByTagName & className
 querySelector & querySelectorAll
 innerHTML, textContent, & innerText
+Changing Styles
