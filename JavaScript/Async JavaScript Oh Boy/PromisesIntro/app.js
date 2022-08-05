@@ -98,6 +98,3 @@ fakeRequestPromise('yelp.com/api/coffee/page1')
         console.log("OH NO, A REQUEST FAILED!!!")
         console.log(err)
     })
-
-
-
