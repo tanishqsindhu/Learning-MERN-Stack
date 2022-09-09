@@ -2,3 +2,4 @@ Working With module.exports
 Requiring A Directory
 Introducing NPM
 Installing Packges - Jokes & Rainbow
+Adding Global Packages
