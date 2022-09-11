@@ -3,3 +3,4 @@ Requiring A Directory
 Introducing NPM
 Installing Packges - Jokes & Rainbow
 Adding Global Packages
+All important Package.json
