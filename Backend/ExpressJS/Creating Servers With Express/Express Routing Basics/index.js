@@ -8,6 +8,14 @@ let count=0;
 //     //res.send(`HELLO WE GOT YOUR REQUEST, THIS IS YOUR RESPONSE ${count}`)
 //     res.send({color:"red"});
 // })
+app.get('/r/:subreddit',(req,res)=>{
+    const {subreddit} =req.params;
+    res.send(`THIS IS ${subreddit} SUBREDDIT`)
+})
+app.get('/r/:subreddit/:postId',(res,req)=>{
+    const { subreddit, postId}= req.params;
+    res.send(`<h1>Your on ${subreddit} subreddit on post ${postId} id</h1>`)
+})
 app.get('/cats',(req,res)=>{
     res.send("MEOW!!!")
 })
