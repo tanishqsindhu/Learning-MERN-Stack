@@ -3,3 +3,4 @@ What is Templating?
 Configuring Express For EJS
 Setting views directory
 EJS Interpolation Syntax
+Passing Data To Templates
