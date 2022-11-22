@@ -1,5 +1,6 @@
 const express = require('express');
 const app =express();
+app.use(express.urlencoded({extended:true}))
 app.get('/tacos',(req,res)=>{
     res.send("GET /tacos response")
     console.log("get")
