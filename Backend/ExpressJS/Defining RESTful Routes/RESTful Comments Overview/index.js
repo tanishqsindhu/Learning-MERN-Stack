@@ -9,7 +9,7 @@ app.set('views',path.join(__dirname,'views'))
 app.set('view engine','ejs')
 const comments =[
     {
-        id: uuid(),
+        id:uuid(),
         username :'Todd',
         comment:'lol that is so funny!'
     },
@@ -46,8 +46,15 @@ app.post('/comments',(req,res)=>{
 })
 app.get('/comments/:id',(req,res)=>{
     const {id}=req.params;
-    const comment =comments.find(c=>c.id===id);
-    res.render('comments/show',{comment});
+    const comment = comments.find(c=>c.id===id);
+    res.render('comments/show',{ comment });
+})
+app.patch('/comments/:id',(req,res)=>{
+    const {id}=req.params;
+    const newCommentText = req.body.comment;
+    const foundComment =comments.find(c=>c.id===id);
+    foundComment.comment=newCommentText;
+    res.render('/comments')
 })
 app.get('/tacos',(req,res)=>{
     res.send("GET /tacos response")
