@@ -9,7 +9,13 @@
 </head>
 
 <body>
-    <h1></h1>
+    <h1>Edit your comment</h1>
+    <form method="POST" action="/comments/<%=comment.id%>?_method=PATCH">
+        <textarea name="comment" id="" cols="30" rows="10">
+        <%=comment.comment%>
+        </textarea>
+        <button>save</button>
+    </form>
 </body>
 
 </html>
