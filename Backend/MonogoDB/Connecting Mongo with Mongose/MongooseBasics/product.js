@@ -35,8 +35,18 @@ const productSchema = new mongoose.Schema({
     }
 })
 const Product = mongoose.model('Product',productSchema);
-const bike = new Product ({name:'Bike helmet',price:49.59,categories:['cycling','safety'],qty:{online:5,inStore:8}});
-bike.save()
+// const bike = new Product ({name:'Tire Pump',price:15,categories:['cycling']});
+// bike.save()
+// .then(data=>{
+//     console.log("IT WORKED!");
+//     console.log(data);
+// })
+// .catch(err=>{
+//     console.log('ERROR');
+//     console.log(err);
+// })
+
+Product.findOneAndUpdate({name:'Tire Pump'},{price:-19.99},{new:true,runValidators:true})
 .then(data=>{
     console.log("IT WORKED!");
     console.log(data);
