@@ -11,3 +11,4 @@ Additional Schema Constraints
 Validating Mongoose Updates
 Mongoose Validation Errors
 Model Instance Methods
+Adding Model Static Methods
