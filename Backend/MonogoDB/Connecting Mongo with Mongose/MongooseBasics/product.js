@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
     price:{
         type:Number,
         require:true,
-        min:0
+        min:[0,'PRICE MUST BE POSITIVE STUPID!!']
     },
     onSale:{
         type:Boolean,
@@ -32,6 +32,10 @@ const productSchema = new mongoose.Schema({
             type:Number,
             default:0
         }
+    },
+    size:{
+        type: String,
+        enum:['S','M','L']
     }
 })
 const Product = mongoose.model('Product',productSchema);
@@ -46,7 +50,7 @@ const Product = mongoose.model('Product',productSchema);
 //     console.log(err);
 // })
 
-Product.findOneAndUpdate({name:'Tire Pump'},{price:-19.99},{new:true,runValidators:true})
+Product.findOneAndUpdate({name:'Tire Pump'},{price:19.99,size:'XS'},{new:true,runValidators:true})
 .then(data=>{
     console.log("IT WORKED!");
     console.log(data);
