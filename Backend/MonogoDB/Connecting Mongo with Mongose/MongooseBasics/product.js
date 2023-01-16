@@ -38,8 +38,8 @@ const productSchema = new mongoose.Schema({
         enum:['S','M','L']
     }
 })
-const Product = mongoose.model('Product',productSchema);
-// const bike = new Product ({name:'Tire Pump',price:15,categories:['cycling']});
+// const Product = mongoose.model('Product',productSchema);
+// const bike = new Product ({name:'Mountain Bike',price:500,categories:['cycling']});
 // bike.save()
 // .then(data=>{
 //     console.log("IT WORKED!");
@@ -50,12 +50,30 @@ const Product = mongoose.model('Product',productSchema);
 //     console.log(err);
 // })
 
-Product.findOneAndUpdate({name:'Tire Pump'},{price:19.99,size:'XS'},{new:true,runValidators:true})
-.then(data=>{
-    console.log("IT WORKED!");
-    console.log(data);
-})
-.catch(err=>{
-    console.log('ERROR');
-    console.log(err);
-})
+// Product.findOneAndUpdate({name:'Mountain Bike'},{price:500},{new:true,runValidators:true})
+// .then(data=>{
+//     console.log("IT WORKED!");
+//     console.log(data);
+// })
+// .catch(err=>{
+//     console.log('ERROR');
+//     console.log(err);
+// })
+
+productSchema.methods.toggleOnSale = function () {
+    this.onSale = !this.onSale;
+    return this.save();
+}
+
+productSchema.methods.addCategory = function (newCat){
+    this.categories.push(newCat);
+    return this.save();
+}
+const Product = mongoose.model('Product',productSchema);
+const findProduct = async ()=>{
+    const foundProduct = await Product.findOne({name:'Mountain Bike'});
+    console.log(foundProduct)
+    await foundProduct.toggleOnSale();
+    console.log(foundProduct)
+}
+findProduct();
