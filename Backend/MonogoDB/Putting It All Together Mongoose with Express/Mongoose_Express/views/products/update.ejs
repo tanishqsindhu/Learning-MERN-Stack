@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update The Product</title>
+</head>
+
+<body>
+    <h1>Update a Product</h1>
+    <form action="/products/<%=foundItem.id%>?_method=PUT" method="post" id="">
+        <label for="name">Name of Product:</label>
+        <input type="text" name="name" placeholder="Name of Product" id="name" value="<%=foundItem.name%>">
+        <label for="price">Price:</label>
+        <input type="number" name="price" placeholder="Price" id="price" value="<%=foundItem.price%>">
+        <label for="category">Category:</label>
+        <select name="category" id="" aria-valuenow="<%=foundItem.category%>">
+            <option value="fruit">Fruit</option>
+            <option value="vegetable">Vegetable</option>
+            <option value="dairy">Dairy</option>
+        </select>
+        <button>Add the Product</button>
+    </form>
+    <a href="/products/<%= foundItem.id%>">Back</a>
+</body>
+
+</html>
