@@ -54,10 +54,11 @@ app.post('/campgrounds',async(req,res)=>{
 });
 
 app.put('/campgrounds/:id',async(req,res)=>{
-    const campground = Campground.findByIdAndUpdate(req.query.id,req.query.campground)
+    const {id} = req.params ;
+    const campground = await Campground.findByIdAndUpdate(id,{...req.body.campground},{runValidators:true,new:true})
     res.redirect(`/campgrounds/${campground._id}`);
 })
 
-app.listen(3000,()=>{
+app.listen(3000,()=>{ 
     console.log('Serving on port 3000')
 })
