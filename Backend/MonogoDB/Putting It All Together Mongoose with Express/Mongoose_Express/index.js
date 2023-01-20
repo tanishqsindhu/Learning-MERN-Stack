@@ -20,13 +20,15 @@ app.set('view engine','ejs');
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'));
 
+const categories=['vegetable','fruit','dairy']
+
 app.get('/products',async(req,res)=>{
     const products = await Product.find({})
     console.log(products);
     res.render('products/index',{products});
 })
 app.get('/products/new',(req,res)=>{
-    res.render('products/new')
+    res.render('products/new',{categories})
 })
 
 app.post('/products',async (req,res)=>{
@@ -45,7 +47,7 @@ app.get('/products/:id',async (req,res)=>{
 app.get('/products/:id/update',async (req,res)=>{
     const {id} = req.params;
     const foundItem = await Product.findById(id);
-    res.render('products/update',{foundItem})
+    res.render('products/update',{foundItem,categories})
 })
 
 app.put('/products/:id',async(req,res)=>{
@@ -54,6 +56,6 @@ app.put('/products/:id',async(req,res)=>{
     res.redirect(`/products/${product._id}`)
 })
 
-app.listen(3000,()=>{
+app.listen(3000,()=> {
     console.log("APP IS LISTENING ON port 3000")
 })

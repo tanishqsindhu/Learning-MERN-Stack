@@ -17,9 +17,10 @@
         <input type="number" name="price" placeholder="Price" id="price" value="<%=foundItem.price%>">
         <label for="category">Category:</label>
         <select name="category" id="" aria-valuenow="<%=foundItem.category%>">
-            <option value="fruit">Fruit</option>
-            <option value="vegetable">Vegetable</option>
-            <option value="dairy">Dairy</option>
+            <% for(let category of categories) {%>
+                <option value="<%=category%>" <%=foundItem.category===category ?'selected':''%>><%=category%>
+                </option>
+                <% } %>
         </select>
         <button>Add the Product</button>
     </form>
