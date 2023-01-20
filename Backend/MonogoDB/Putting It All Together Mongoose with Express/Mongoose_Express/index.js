@@ -24,7 +24,7 @@ const categories=['vegetable','fruit','dairy']
 
 app.get('/products',async(req,res)=>{
     const products = await Product.find({})
-    console.log(products);
+    // console.log(products);
     res.render('products/index',{products});
 })
 app.get('/products/new',(req,res)=>{
@@ -49,7 +49,11 @@ app.get('/products/:id/update',async (req,res)=>{
     const foundItem = await Product.findById(id);
     res.render('products/update',{foundItem,categories})
 })
-
+app.delete('/products/:id',async(req,res)=>{
+    const {id} = req.params;
+    const deleteProduct = await Product.findByIdAndDelete(id)
+    res.redirect(`/products`)
+})
 app.put('/products/:id',async(req,res)=>{
     const {id} = req.params;
     const product = await Product.findByIdAndUpdate(id,req.body,{runValidators:true,new:true})
