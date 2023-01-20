@@ -8,7 +8,8 @@ app.use(morgan('dev'))
 
 app.use((req,res,next)=>{
     console.log("THIS IS MY FIRST MIDDLEWARE!!!!")
-    next();
+    return next();
+    console.log("THIS IS MY FIRST MIDDLEWARE!!!!  AFTER CALLING NEXT()")
 })
 
 app.use((req,res,next)=>{
