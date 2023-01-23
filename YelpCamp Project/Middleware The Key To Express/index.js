@@ -16,13 +16,13 @@ app.use('/dogs',(req,res,next)=>{
     next();
 })
 
-app.use((req,res,next)=>{
+const verifyPassword = (req,res,next)=>{
     const {password}=req.query;
     if(password==='chickennugget'){
         next();
     }
     res.send('SORRY YOU NEED A PASSSWORD!!!!')
-})
+}
 // app.use((req,res,next)=>{
 //     console.log("THIS IS MY FIRST MIDDLEWARE!!!!")
 //     return next();
@@ -43,7 +43,7 @@ app.get('/dogs',(req,res)=>{
     res.send("WOOF WOOF!")
 })
 
-app.get('/secret',(req,res)=>{
+app.get('/secret',verifyPassword,(req,res)=>{
     res.send("NEVER TELL A SECRET")
 })
 
