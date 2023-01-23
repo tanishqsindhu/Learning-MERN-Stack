@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campgrounds</title>
+</head>
+
+<body>
+    <h1>All Campgrounds</h1>
+    <ul>
+        <% for(let campground of campgrounds){ %>
+            <li>
+                <a href="/campgrounds/<%= campground._id%>">
+                    <%= campground.title %>
+                </a>
+                <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST"><button>Delete</button>
+                </form>
+            </li>
+            <% } %>
+    </ul>
+    <div>
+        <a href="/campgrounds/new">Add Campground</a>
+    </div>
+    <div>
+        <a href="/campgrounds/<%= campgrounds._id%>/edit">Edit Campground</a>
+    </div>
+</body>
+
+</html>
