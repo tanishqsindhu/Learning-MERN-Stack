@@ -16,6 +16,13 @@ app.use('/dogs',(req,res,next)=>{
     next();
 })
 
+app.use((req,res,next)=>{
+    const {password}=req.query;
+    if(password==='chickennugget'){
+        next();
+    }
+    res.send('SORRY YOU NEED A PASSSWORD!!!!')
+})
 // app.use((req,res,next)=>{
 //     console.log("THIS IS MY FIRST MIDDLEWARE!!!!")
 //     return next();
@@ -34,6 +41,10 @@ app.get('/',(req,res)=>{
 app.get('/dogs',(req,res)=>{
     console.log(`REQEUEST DATE: ${req.requestTime}`)
     res.send("WOOF WOOF!")
+})
+
+app.get('/secret',(req,res)=>{
+    res.send("NEVER TELL A SECRET")
 })
 
 app.use((req,res)=>{
