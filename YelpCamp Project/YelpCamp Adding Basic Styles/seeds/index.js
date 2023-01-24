@@ -17,7 +17,14 @@ const seedDB=async()=>{
     for(let i =0;i<=50;i++){
         const sample = (array)=> array[Math.floor(Math.random()*array.length)]
         const random1000=Math.floor(Math.random()*1000);
-        const c = new campground({location:`${cities[random1000].city}, ${cities[random1000].state}`,title:`${sample(descriptors)} ${sample(places)}`}) 
+        const price=Math.floor(Math.randow()*20)+10;
+        const c = new campground({
+        location:`${cities[random1000].city}, ${cities[random1000].state}`,
+        title:`${sample(descriptors)} ${sample(places)}`,
+        image:'https://source.unsplash.com/collection/484351',
+        description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor iure nihil dignissimos corrupti, quam amet exercitationem ullam quaerat similique magnam culpa eaque nisi corporis sint. Praesentium, vitae? Aliquam, adipisci dignissimos!',
+        price
+        }) 
         await c.save();
     }
 }
