@@ -1,7 +1,11 @@
 <% layout('layouts/boilerplate') %>
-    <!-- <h1><%= campground.title %></h1>
-    <h2><%= campground.location %></h2> -->
-    <ul>
+    <h1><%= campground.title %></h1>
+    <h2><%= campground.location %></h2>
+    <img src="<%= campground.image %> " alt="">
+    <p><%= campground.description %> </p>
+    <p><a href="/campgrounds/<%= campground._id %>/edit">Edit Campground</a>
+    </p>
+    <!-- <ul>
         <h2>
             <%= campground.title %>
         </h2>
@@ -14,12 +18,11 @@
         <li>
             <%= campground.location %>
         </li>
-    </ul>
-    <div>
-        <a href="/campgrounds/<%=campground._id%>/edit">Edit Campground</a>
-    </div>
-    <div>
-        <a href="/campgrounds/">All Campgrounds</a>
-    </div>
+    </ul> -->
+    <p>
     <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST"><button>Delete</button>
     </form>
+</p>
+    <footer>
+        <a href="/campgrounds/">All Campgrounds</a>
+    </footer>
