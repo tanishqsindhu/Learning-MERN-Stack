@@ -17,7 +17,7 @@ const seedDB=async()=>{
     for(let i =0;i<=50;i++){
         const sample = (array)=> array[Math.floor(Math.random()*array.length)]
         const random1000=Math.floor(Math.random()*1000);
-        const price=Math.floor(Math.randow()*20)+10;
+        const price=Math.floor(Math.random()*20)+10;
         const c = new campground({
         location:`${cities[random1000].city}, ${cities[random1000].state}`,
         title:`${sample(descriptors)} ${sample(places)}`,
