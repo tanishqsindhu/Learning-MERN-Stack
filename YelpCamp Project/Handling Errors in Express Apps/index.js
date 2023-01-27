@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-
+const AppError=require('./AppError')
 // morgan('tiny')
 
 app.use(morgan('dev'))
@@ -21,7 +21,8 @@ const verifyPassword = (req,res,next)=>{
     if(password==='chickennugget'){
         next();
     }
-    res.send('SORRY YOU NEED A PASSSWORD!!!!')
+    // res.send('SORRY YOU NEED A PASSSWORD!!!!')
+    throw new AppError('Password required!',401)
 }
 // app.use((req,res,next)=>{
 //     console.log("THIS IS MY FIRST MIDDLEWARE!!!!")
@@ -47,6 +48,10 @@ app.get('/secret',verifyPassword,(req,res)=>{
     res.send("NEVER TELL A SECRET")
 })
 
+app.get('/admin',(req,res)=>{
+    throw new AppError('You are not admin',403)
+})
+
 app.get('/error',(req,res)=>{
     chicken.fly();
 })
@@ -55,13 +60,19 @@ app.get('/error',(req,res)=>{
 //     res.status(404).send('NOT FOUND');
 // })
 
+// app.use((err,req,res,next)=>{
+//     console.log("*************************************")
+//     console.log("****************ERROR****************")
+//     console.log("*************************************")
+//     console.log(err)
+//     next(err)
+// })
+
 app.use((err,req,res,next)=>{
-    console.log("*************************************")
-    console.log("****************ERROR****************")
-    console.log("*************************************")
-    console.log(err)
-    next(err)
+    const{status = 500, message='Something Went Wrong'}=err;
+    res.status(status).send(message)
 })
+
 
 app.listen(3000,()=>{
     console.log('App is running on localhost:3000')
