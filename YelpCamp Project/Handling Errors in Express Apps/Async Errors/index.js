@@ -39,11 +39,16 @@ app.get('/products/new',(req,res)=>{
     res.render('products/new',{categories})
 })
 
-app.post('/products',async (req,res)=>{
-    const newProduct = new Product(req.body);
-    await newProduct.save();
+app.post('/products',async (req,res,next)=>{
+    try{
+        const newProduct = new Product(req.body);
+        await newProduct.save();
+        res.redirect(`/products/${newProduct._id}`)
+    }catch(e){
+        next(e);
+    }
     // res.redirect('/products/show',{newProduct})
-    res.redirect(`/products/${newProduct._id}`)
+
 })
 
 app.get('/products/:id',async (req,res,next)=>{
