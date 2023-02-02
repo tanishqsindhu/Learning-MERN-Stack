@@ -22,17 +22,21 @@ app.use(methodOverride('_method'));
 
 const categories=['vegetable','fruit','dairy']
 
-app.get('/products',async(req,res)=>{
-    const {category} = req.query;
-    if(category){
-        const products = await Product.find({ category:category})
-        // console.log(products);
-        res.render('products/index',{products,category});
-    }else{
-        const products = await Product.find({})
-        // console.log(products); 
-        res.render('products/index',{products,category:'All'});
-    } 
+app.get('/products',async(req,res,next)=>{
+    try {
+        const {category} = req.query;
+        if(category){
+            const products = await Product.find({ category:category})
+            // console.log(products);
+            res.render('products/index',{products,category});
+        }else{
+            const products = await Product.find({})
+            // console.log(products); 
+            res.render('products/index',{products,category:'All'});
+        } 
+    } catch (error) {
+        next(error);
+    }
 })
 app.get('/products/new',(req,res)=>{
     // throw new AppError('NOT ALLOWED',401)
@@ -52,26 +56,39 @@ app.post('/products',async (req,res,next)=>{
 })
 
 app.get('/products/:id',async (req,res,next)=>{
-    const {id} = req.params;
-    const foundItem = await Product.findById(id);
-    if(!foundItem){
-        return next (new AppError('Product Not Found',404));
+    try {
+        const {id} = req.params;
+        const foundItem = await Product.findById(id);
+        if(!foundItem){
+            return next (new AppError('Product Not Found',404));
+        }
+        res.render('products/show',{foundItem})
+    } catch (error) {
+        next(error);
     }
-    res.render('products/show',{foundItem})
 })
 
 app.get('/products/:id/update',async (req,res,next)=>{
+   try {
     const {id} = req.params;
     const foundItem = await Product.findById(id);
     if(!foundItem){
         return next (new AppError('Product Not Found',404));
     }
     res.render('products/update',{foundItem,categories})
+   } catch (error) {
+    next(error);
+   }
 })
-app.delete('/products/:id',async(req,res)=>{
-    const {id} = req.params;
-    const deleteProduct = await Product.findByIdAndDelete(id)
-    res.redirect(`/products`)
+app.delete('/products/:id',async(req,res,next)=>{
+    try {
+        const {id} = req.params;
+        const deleteProduct = await Product.findByIdAndDelete(id)
+        res.redirect(`/products`)
+    } catch (error) {
+        next(error);
+    }
+
 })
 app.put('/products/:id',async(req,res)=>{
     const {id} = req.params;
