@@ -5,3 +5,4 @@ Our Custom Error Class
 Handling async Errors
 Handling More async Errors
 Defining An async utility
+Differentiating Mongoose Errors

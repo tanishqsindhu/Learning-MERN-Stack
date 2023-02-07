@@ -83,6 +83,17 @@ app.put('/products/:id',wrapAsync(async(req,res)=>{
     res.redirect(`/products/${product._id}`)
 }))
 
+const handleValidationError=err=>{
+    consol.dir(err);
+    return new AppError(`Validation Failed ${err.message}`,400);
+}
+
+app.use((err,req,res,next)=>{
+    console.log(err.name);
+    if(err.name==='ValidationError')err=handleValidationError(err)
+    next(err);
+})
+
 app.use((err,req,res,next)=>{
     const {status=500,message='SOMETHING WENT WRONG'}=err;
     res.status(status).send(message);
