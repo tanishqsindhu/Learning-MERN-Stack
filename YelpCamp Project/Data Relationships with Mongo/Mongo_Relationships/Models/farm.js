@@ -50,4 +50,6 @@ const addProducts =async()=>{
     await farm.save();
 }
 
-addProducts()
+Farm.findOne({name:'Full Belly Farm'})
+.populate('products')
+.then(farm=>console.log(farm))
