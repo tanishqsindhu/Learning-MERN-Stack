@@ -4,9 +4,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Product =require('./models/product');
 const methodOverride = require('method-override');
+const Farm = require('./models/farm');
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
+mongoose.connect('mongodb://127.0.0.1:27017/farmStand2')
     .then(()=>{
     console.log("MONGO CONNECTION OPEN!!!")
     })
@@ -14,14 +15,39 @@ mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
     console.log("OH NO MONGO CONNECTION ERROR!!!!")
     console.log(err)
 })
+// Require static assets from public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('views',path.join(__dirname,'views'));
-app.set('view engine','ejs');
+// Set 'views' directory for any views 
+// being rendered res.render()
+app.set('views', path.join(__dirname, 'views'));
+
+// Set view engine as EJS
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'));
 
 const categories=['vegetable','fruit','dairy']
 
+//Farm Routes
+
+app.get('/farms',async(req,res)=>{
+    const farms = await Farm.find({});
+    res.render('farms/index',{farms})
+})
+
+app.get('/farms/new',(req,res)=>{
+    res.render('farms/new')
+})
+
+app.post('/farms',async(req,res)=>{
+    const newFarm = new Farm(req.body)
+    await newFarm.save()
+    res.render('/farms')
+})
+
+// Product Routes
 app.get('/products',async(req,res)=>{
     const {category} = req.query;
     if(category){
