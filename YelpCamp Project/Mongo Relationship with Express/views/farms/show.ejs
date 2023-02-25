@@ -6,19 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        All Farms
+        <%=farm.name%>
     </title>
 </head>
 
 <body>
-    <h1>All farms</h1>
+    <h1>
+        <%=farm.name%>
+    </h1>
     <ul>
-        <% for(let farm of farms){ %>
-            <li>
-                <a href="/farms/<%=farm._id%>"><%=farm.name%></a>
-            </li>
-            <%}%>
+        <li>City: <%=farm.city%>
+        </li>
+        <li>Email:
+                <%=farm.email%>
+        </li>
     </ul>
+    <a href="/farms">All Farms</a>
 </body>
 
 </html>
