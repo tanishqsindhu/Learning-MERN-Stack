@@ -21,6 +21,13 @@
                 <%=farm.email%>
         </li>
     </ul>
+    <h2>Products</h2>
+    <ul>
+        <% for(let product of products) {%>
+        <li><a href="/productss/<%=product._id%>"><%= product.name %></a></li>
+        <% } %>
+    </ul>
+    <a href="/farms/<%=farm._id%>/products/new">Add Product</a>
     <a href="/farms">All Farms</a>
 </body>
 
