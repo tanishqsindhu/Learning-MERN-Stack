@@ -58,6 +58,12 @@ app.get('/farms/:id/products/new',async(req,res)=>{
     res.render('products/new',{categories,farm})
 })
 
+app.delete('/farms/:id',async(req,res)=>{
+    const id=req.params.id;
+    const farmDelete = await Farm.findByIdAndDelete(id);
+    res.redirect('/farms');
+})
+
 app.post('/farms/:id/products',async(req,res)=>{
     const {id} =req.params;
     const farm = await Farm.findById(id);
