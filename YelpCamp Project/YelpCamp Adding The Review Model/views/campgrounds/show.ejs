@@ -20,7 +20,7 @@
             <div class="card-footer text-muted">2 days ago</div>
           </div>
           <div>
-            <form action="" class="mb-3">
+            <form action="/campgrounds/<%= campground._id %>/reviews"  method="post" class="mb-3 validated-form" novalidate>
                 <h2>Leave a Review</h2>
                 <div class="mb-3">
                     <label class="form-label" for="rating">Rating</label>
@@ -35,32 +35,3 @@
           </div>
     </div>
 </div>
-<!-- 
-
-    <h1><%= campground.title %></h1>
-    <h2><%= campground.location %></h2>
-    <img src="<%= campground.image %> " alt="">
-    <p><%= campground.description %> </p>
-    <p><a href="/campgrounds/<%= campground._id %>/edit">Edit Campground</a>
-    </p>
-    <ul>
-        <h2>
-            <%= campground.title %>
-        </h2>
-        <li>
-            $<%= campground.price %>
-        </li>
-        <li>
-            <%= campground.description %>
-        </li>
-        <li>
-            <%= campground.location %>
-        </li>
-    </ul>
-    <p>
-    <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST"><button>Delete</button>
-    </form>
-</p>
-    <footer>
-        <a ></a>
-    </footer> -->
