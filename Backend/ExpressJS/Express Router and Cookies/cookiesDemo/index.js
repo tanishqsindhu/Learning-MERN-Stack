@@ -1,8 +1,13 @@
 const express= require('express');
 const app = express();
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+
 app.get('/',(req,res)=>{
-    res.send('HEY THERE!')
+    const{name='noname'}=req.cookies;
+    res.send(`HEY ${name}`)
 })
 
 app.get('/setname',(req,res)=>{
