@@ -8,7 +8,8 @@ const expressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catachAsync');
 const ExpressError = require('./utils/ExpressError');
 const {campgroundSchema, reviewSchema} = require('./schema');
-const Review = require('./models/review')
+const Review = require('./models/review');
+const catachAsync = require('./utils/catachAsync');
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
     .then(()=>{
     console.log("MONGO CONNECTION OPEN!!!")
@@ -97,6 +98,13 @@ app.post('/campgrounds/:id/reviews',validateReview,catchAsync(async(req,res)=>{
     await campground.save();
     res.redirect(`/campgrounds/${campground._id}/`)
 }))
+
+app.delete('/campgrounds/:id/reviews/:reviewId',catachAsync(async(req,res)=>{
+    const {id, reviewId} =req.params;
+    await Campground.findByIdAndUpdate(id,{$pull:{reviews:reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/campgrounds/${id}`)
+}));
 
 app.all('*',(req,res,next)=>{
 next(new ExpressError('Page Not Found',404))
