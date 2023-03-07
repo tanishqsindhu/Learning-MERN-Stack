@@ -3,3 +3,4 @@ Authentication Vs. Authorization
 How to (not) Store Passwords
 Cryptographic Hashing Functions
 Password Salts
+Intro to Bcrypt
