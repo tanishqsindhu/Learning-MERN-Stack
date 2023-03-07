@@ -5,3 +5,4 @@ Introducing Cookies
 Sending Cookies
 Cookie Parser Middleware
 Signing Cookies
+OPTIONAL: HMAC Signing
