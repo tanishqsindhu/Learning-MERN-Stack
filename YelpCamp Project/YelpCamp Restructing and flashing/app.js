@@ -1,17 +1,12 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const Campground =require('./models/campground');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
-const catchAsync = require('./utils/catachAsync');
 const ExpressError = require('./utils/ExpressError');
-const {campgroundSchema, reviewSchema} = require('./schema');
-const Review = require('./models/review');
-const catachAsync = require('./utils/catachAsync');
 
-const campgroundRouter=('./routes/campgrounds');
-const reviewsRouter=('./routes/reviews')
+const campgrounds=('./routes/campgrounds');
+const reviews=('./routes/reviews')
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
     .then(()=>{
@@ -36,8 +31,8 @@ app.get('/',(req,res)=>{
     res.render('home')
 }); 
 
-app.use('/campgrounds',campgroundRouter);
-app.use('/campgrounds/:id/reviews',reviewsRouter);
+app.use('/campgrounds',campgrounds);
+app.use('/campgrounds/:id/reviews',reviews);
 
 app.all('*',(req,res,next)=>{
 next(new ExpressError('Page Not Found',404))
