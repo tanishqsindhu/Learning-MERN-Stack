@@ -9,9 +9,9 @@ const methodOverride = require('method-override');
 const passport =require('passport');
 const LocalStrategy=require('passport-local')
 const User = require('./models/user')
-const campgrounds = require('./routes/campgrounds');
-const reviews = require('./routes/reviews');
-
+const campgroundsRoutes = require('./routes/campgrounds');
+const reviewsRoutes = require('./routes/reviews');
+const usersRoutes = require('./routes/users')
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
     .then(()=>{
     console.log("MONGO CONNECTION OPEN!!!")
@@ -63,8 +63,9 @@ app.get('/fakeUser',async(req,res)=>{
     res.send(newUser);
 })
 
-app.use('/campgrounds', campgrounds)
-app.use('/campgrounds/:id/reviews', reviews)
+app.use('/campgrounds', campgroundsRoutes)
+app.use('/campgrounds/:id/reviews', reviewsRoutes)
+app.use('/register', usersRoutes)
 
 app.get('/', (req, res) => {
     res.render('home')
