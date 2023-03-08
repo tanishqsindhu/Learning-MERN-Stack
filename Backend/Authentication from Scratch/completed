@@ -9,3 +9,4 @@ Auth Demo: Registering
 Auth Demo: Login
 Auth Demo: Staying Logged In With Session
 Auth Demo: Logout
+Auth Demo: Require Login Middleware
