@@ -17,8 +17,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/authDemo')
     console.log(err)
 })
 
+const sessionConfig={secret:'thisisnotgoodsecret',resave:false,saveUninitialized:false}
+
 app.use(express.urlencoded({extended:true}))
-app.use(session({secret:'thisisnotgoodsecret'}))
+app.use(session(sessionConfig))
 
 app.get('/register',(req,res)=>{
     res.render('register')
@@ -51,11 +53,18 @@ app.post('/login',async(req,res)=>{
     }
 })
 
+app.post('/logout',(req,res)=>{
+    // req.session.user_id=null;
+    req.session.destroy();
+    res.redirect('/login')
+})
+
 app.get('/secret',(req,res)=>{
     if(!req.session.user_id){
         res.redirect('/login');
-    }
-    res.send('THIS IS SECRET! You cant see me unless ur login')
+    }else{    res.render('seceret')}
+    // res.send('THIS IS SECRET! You cant see me unless ur login')
+
 })
 
 app.listen(3000,()=>{
