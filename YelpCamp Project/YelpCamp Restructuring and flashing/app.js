@@ -6,9 +6,10 @@ const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
 const session= require('express-session');
 const flash = require('connect-flash');
+const router = express.Router();
 
-const campgrounds=('./routes/campgrounds');
-const reviews=('./routes/reviews')
+const campgroundsRouter=('./routes/campgrounds');
+const reviewsRouter=('./routes/reviews')
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
     .then(()=>{
@@ -48,8 +49,8 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.use('/campgrounds',campgrounds);
-app.use('/campgrounds/:id/reviews',reviews);
+app.use('/campgrounds',campgroundsRouter);
+app.use('/campgrounds/:id/reviews',reviewsRouter);
 
 app.get('/',(req,res)=>{
     res.render('home')

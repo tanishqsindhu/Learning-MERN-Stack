@@ -5,21 +5,24 @@
             <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="campground[title]"value="<%=campground.title%>" required>
+                    <input type="text" class="form-control" id="title" name="campground[title]"
+                        value="<%=campground.title%>" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" name="campground[location]" value="<%=campground.location%>" required>
+                    <input type="text" class="form-control" id="location" name="campground[location]"
+                        value="<%=campground.location%>" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image URL</label>
-                    <input type="text" class="form-control" id="image" name="campground[image]"value="<%=campground.image %>" required>
+                    <input type="text" class="form-control" id="image" name="campground[image]"
+                        value="<%=campground.image %>" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -37,22 +40,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea type="text" class="form-control" id="description"
-                        name="campground[description]" required><%=campground.description %></textarea>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
+                    <textarea type="text" class="form-control" id="description" name="campground[description]"
+                        required><%=campground.description %></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-success">Upgrade Campground</button>
                 </div>
             </form>
             <a href="/campgrounds">All Campgrounds</a>
-            <a href="/campgrounds/<%=campground._id%>">Back To Campground</a> 
+            <a href="/campgrounds/<%=campground._id%>">Back To Campground</a>
         </div>
     </div>
 
-        <!-- <h1>Edit the Campground</h1>
+    <!-- <h1>Edit the Campground</h1>
     <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
         <div>
             <label for="title">Name</label>
