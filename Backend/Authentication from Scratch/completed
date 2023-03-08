@@ -5,3 +5,4 @@ Cryptographic Hashing Functions
 Password Salts
 Intro to Bcrypt
 Auth Demo: Setup
+Auth Demo: Registering
