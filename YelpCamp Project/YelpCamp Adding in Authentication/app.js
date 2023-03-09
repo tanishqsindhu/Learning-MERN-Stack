@@ -66,7 +66,7 @@ app.get('/fakeUser',async(req,res)=>{
 
 app.use('/campgrounds', campgroundsRoutes)
 app.use('/campgrounds/:id/reviews', reviewsRoutes)
-app.use('/register', usersRoutes)
+app.use('/', usersRoutes)
 
 app.get('/', (req, res) => {
     res.render('home')
