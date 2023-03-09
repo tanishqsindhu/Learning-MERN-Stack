@@ -8,3 +8,4 @@ isLoggedIn Middleware
 Adding Logout
 currentUser Helper
 Fixing Register Route
+ReturnTo Behavior
