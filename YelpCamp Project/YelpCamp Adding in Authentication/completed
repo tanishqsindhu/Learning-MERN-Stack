@@ -4,3 +4,4 @@ Configuring Passport
 Register Form
 Register Route Logic
 Login Routes
+isLoggedIn Middleware
