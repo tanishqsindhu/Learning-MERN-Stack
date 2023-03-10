@@ -2,3 +2,4 @@ Intro To Image Upload Process
 The Multer Middleware
 Cloudinary Registration
 Uploading To Cloudinary Basics
+Storing Uploaded Image Links In Mongo
