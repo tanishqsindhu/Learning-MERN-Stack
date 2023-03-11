@@ -2,8 +2,6 @@
     <link rel="stylesheet" href="/stylesheets/stars.css">
     <div class="row">
         <div class="col-6">
-            <div id='map' style='width: 400px; height: 300px;'></div>
-
             <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <% campground.images.forEach((img, i)=> { %>
@@ -24,7 +22,6 @@
                     </a>
                     <% } %>
             </div>
-
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -36,6 +33,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-muted">
+                        <div id='map' style='width: 600px; height: 300px;'></div>
                         <%= campground.location%>
                     </li>
                     <li class="list-group-item">Submitted by <%= campground.author.username%>
@@ -116,5 +114,6 @@
     </div>
     <script>
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const campground =<%-JSON.stringify(campground) %>
     </script>
     <script src="/javascripts/showPageMap.js"></script>
