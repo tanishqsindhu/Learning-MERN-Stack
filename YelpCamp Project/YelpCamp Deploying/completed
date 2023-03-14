@@ -3,3 +3,4 @@ Using Mongo For Our Session Store
 Heroku Setup
 Pushing to Heroku
 Fixing Heroku Errors
+Configuring Heroku Env Variables
