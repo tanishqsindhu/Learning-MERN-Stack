@@ -17,7 +17,8 @@ const reviewsRoutes = require('./routes/reviews');
 const usersRoutes = require('./routes/users');
 const mongoSantize=require('express-mongo-sanitize');
 const helmet=require('helmet');
-
+// const dbUrl = process.env.DB_URL;
+// 'mongodb://127.0.0.1:27017/yelp-camp'
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
     .then(()=>{
     console.log("MONGO CONNECTION OPEN!!!")
@@ -52,7 +53,7 @@ const sessionConfig = {
 }
 app.use(session(sessionConfig))
 app.use(flash());
-app.use(helmet());
+// app.use(helmet());
 
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
