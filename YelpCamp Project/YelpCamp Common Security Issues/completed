@@ -2,3 +2,4 @@ Mongo Injection
 Cross Site Scripting (XSS)
 Sanitizing HTML w/ JOI
 Minor Changes to Session/Cookies
+Hiding Errors
