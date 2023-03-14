@@ -18,8 +18,8 @@ const usersRoutes = require('./routes/users');
 const mongoSantize=require('express-mongo-sanitize');
 const helmet=require('helmet');
 const MongoStore = require('connect-mongo');
-
-const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp';
+const secret=process.env.SECRET;
+const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl)
     .then(()=>{
     console.log("MONGO CONNECTION OPEN!!!")
@@ -44,7 +44,7 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'squirrel'
+        secret
     }
 });
 
@@ -55,7 +55,7 @@ store.on('error',function(e){
 const sessionConfig = {
     store,
     name:'ylpcamp',
-    secret: 'thisshouldbeabettersecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
