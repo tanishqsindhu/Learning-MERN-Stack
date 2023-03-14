@@ -17,9 +17,10 @@ const reviewsRoutes = require('./routes/reviews');
 const usersRoutes = require('./routes/users');
 const mongoSantize=require('express-mongo-sanitize');
 const helmet=require('helmet');
-// const dbUrl = process.env.DB_URL;
-// 'mongodb://127.0.0.1:27017/yelp-camp'
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
+const MongoStore = require('connect-mongo');
+
+const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp';
+mongoose.connect(dbUrl)
     .then(()=>{
     console.log("MONGO CONNECTION OPEN!!!")
     })
@@ -39,7 +40,20 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSantize({replaceWith:'_'}));
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'squirrel'
+    }
+});
+
+store.on('error',function(e){
+    console.log("SESSION STORE ERROR",e)
+})
+
 const sessionConfig = {
+    store,
     name:'ylpcamp',
     secret: 'thisshouldbeabettersecret!',
     resave: false,
@@ -70,6 +84,7 @@ const styleSrcUrls = [
     "https://api.tiles.mapbox.com/",
     "https://fonts.googleapis.com/",
     "https://use.fontawesome.com/",
+    "https://fonts.gstatic.com/",
 ];
 const connectSrcUrls = [
     "https://api.mapbox.com/",
