@@ -15,7 +15,7 @@ const User = require('./models/user')
 const campgroundsRoutes = require('./routes/campgrounds');
 const reviewsRoutes = require('./routes/reviews');
 const usersRoutes = require('./routes/users');
-
+const mongoSantize=require('express-mongo-sanitize');
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
     .then(()=>{
@@ -35,6 +35,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(mongoSantize({replaceWith:_}));
 
 const sessionConfig = {
     secret: 'thisshouldbeabettersecret!',
